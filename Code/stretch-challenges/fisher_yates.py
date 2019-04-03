@@ -1,8 +1,6 @@
-'''
-psuedocode:
-takes an array as input 
-outputs a randomized version of the input
-'''
+#takes an array as input 
+#outputs a randomized version of the input
+
 import random
 
 def shuffle_deck(array):
