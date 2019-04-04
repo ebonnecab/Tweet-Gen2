@@ -13,7 +13,7 @@ while new_game == "yes":
     }
 
 
-    vocab_list = list(dict.keys()) #takes values from dict and turns them into a list
+    vocab_list = list(dict.keys()) #takes keys from dict and turns them into a list
     
     random.shuffle(vocab_list) #shuffled the words list
     
