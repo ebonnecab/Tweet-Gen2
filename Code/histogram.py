@@ -32,13 +32,13 @@ List Implementation of Histogram
 '''
 def listogram():
     sample_sentence = "one fish two fish red fish blue fish"
-    word_array = sample_sentence.split(" ")
-    words_list = []
-    for word in word_array:
-        for index in words_list:
-            if index[0] == word:
+    word_array = sample_sentence.split(" ") #splits string into list of individual strings
+    words_list = [] #creates empty list object
+    for word in word_array: #accessing word in array
+        for index in words_list: #accessing index of words list
+            if index[0] == word: #counting word freq for each word 
                 index[1] += 1
-        words_list.append([word, 1])
+        words_list.append([word, 1]) #appending word and word freq to list
     return words_list
 
 if __name__ == '__main__':
