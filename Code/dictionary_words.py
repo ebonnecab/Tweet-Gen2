@@ -3,12 +3,12 @@ import sys
 
 number = input('Enter number of words: ') #takes user input
 
-def get_words():
+def get_words(file):
   words_list = []  # creates list object
-  with open('/usr/share/dict/words') as file:  # accessing word file
-    text = file.read().strip().split() #reads file, strips leading/trailing chars, and retuns a list of strings
+  with open(file) as f:  # accessing word file
+    text = f.read().strip().split() #reads file, strips leading/trailing chars, and retuns a list of strings
     for word in text:
-      words_list.append(word)
+      words_list.append(word) #appends word  from text to list
     return words_list
 
 
@@ -20,6 +20,7 @@ def random_sentence(words):
 
     
 if __name__ == '__main__':
-  words_list = get_words()
+  source = get_words('/usr/share/dict/words')
+  words_list = source
   test = random_sentence(words_list)
   print(test)
