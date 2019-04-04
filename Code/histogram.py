@@ -26,11 +26,27 @@ def frequency(word, histogram):
     else:
         return "That word is not in the histogram"  #returns error msg
 
+
+'''
+List Implementation of Histogram
+'''
+def listogram():
+    sample_sentence = "one fish two fish red fish blue fish"
+    word_array = sample_sentence.split(" ")
+    words_list = []
+    for word in word_array:
+        for index in words_list:
+            if index[0] == word:
+                index[1] += 1
+        words_list.append([word, 1])
+    return words_list
+
 if __name__ == '__main__':
-    histo_text = histo_file('siddhartha.txt')
-    histo = histogram(histo_text)
-    print(histo)
+    # histo_text = histo_file('siddhartha.txt')
+    # histo = histogram(histo_text)
+    # print(histo)
+    listo = listogram()
+    print(listo)
+    # print(unique_words(histo))
 
-    print(unique_words(histo))
-
-    print(frequency('he', histo))
+    # print(frequency('he', histo))
