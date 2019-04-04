@@ -4,6 +4,7 @@ import sys
 
 def word_shuffle(word_array):
     #accesses index of argument
+    #in reverse order
     for index in range(len(word_array)-1,0,-1):
         #picks a random number between zero and len of array
         random_index = random.randint(0, index)
