@@ -36,7 +36,7 @@ def listogram():
     words_list = [] #creates empty list object
     for word in word_array: #accessing word in array
         for index in words_list: #accessing index of words list
-            if index[0] == word: #counting word freq for each word 
+            if index[0] == word: #counting word freq for each word and creating 2d array
                 index[1] += 1
         words_list.append([word, 1]) #appending word and word freq to list
     return words_list
