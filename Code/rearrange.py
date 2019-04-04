@@ -2,13 +2,15 @@
 import random 
 import sys
 
-word_array = sys.argv[1:]
-
-def word_shuffle():
-    for index in range(len(word_array)-1,0,-1): #accesses index of argument
-        random_index = random.randint(0, index) #picks a random number between zero and len of array
-        word_array[index] = word_array[index].lower() #converts string to lowercase
-        word_array[index], word_array[random_index] = word_array[random_index], word_array[index] #swaps original index with rand index
+def word_shuffle(word_array):
+    #accesses index of argument
+    for index in range(len(word_array)-1,0,-1):
+        #picks a random number between zero and len of array
+        random_index = random.randint(0, index)
+        #converts string to lowercase
+        word_array[index] = word_array[index].lower()
+        #swaps original index with rand index
+        word_array[index], word_array[random_index] = word_array[random_index], word_array[index] 
 
     #joining word array into a sentence
     sentence = ' '.join(word_array) + '.'
@@ -16,4 +18,5 @@ def word_shuffle():
     return sentence
 
 if __name__ == '__main__':
-    print(word_shuffle())
+    test = word_shuffle(sys.argv[1:])
+    print(test)

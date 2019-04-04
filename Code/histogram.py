@@ -41,12 +41,34 @@ def listogram():
         words_list.append([word, 1]) #appending word and word freq to list
     return words_list
 
+'''
+Tuples Implementation of Histogram
+'''
+def tuplegram():
+    sample_sentence = "one fish two fish red fish blue fish"
+    word_array = sample_sentence.split() #splits string into list of individual strings
+    words_list = [] #creates empty list object
+    for word in word_array:
+        found = False
+        for index in words_list:
+            if index[0] == word:
+                freq = index[1] + 1
+                words_list.remove(index)
+                words_list.append((word, freq))
+                found = True
+        if not found:
+            words_list.append((word, 1))
+    
+    return words_list
 if __name__ == '__main__':
     # histo_text = histo_file('siddhartha.txt')
     # histo = histogram(histo_text)
     # print(histo)
-    listo = listogram()
-    print(listo)
     # print(unique_words(histo))
-
     # print(frequency('he', histo))
+
+    # listo = listogram()
+    # print(listo)
+
+    tuplegram = tuplegram()
+    print(tuplegram)
