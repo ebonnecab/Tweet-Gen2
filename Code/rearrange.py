@@ -18,5 +18,6 @@ def word_shuffle(word_array):
     return sentence
 
 if __name__ == '__main__':
-    test = word_shuffle(sys.argv[1:])
+    user_input = sys.argv[1:]
+    test = word_shuffle(user_input)
     print(test)
