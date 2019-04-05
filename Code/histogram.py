@@ -1,14 +1,24 @@
 import random
-
+''' 
+Dictionary Implementation of Histogram
+'''
 def histo_file (file):
+    words_list = []
     with open(file) as f:  # access file
-        # reads file, strips leading/trailing chars, and retuns a list of strings
-        text = f.read().strip().split()
-        return text
+        #access each line of file
+        for line in f:
+            #splits line into list of words
+            text = line.split()
+            for word in text: #accessing each word
+                word.strip() #strips trailing/leading chars
+                words_list.append(word) #appending words to list
+    return words_list
+        
 
 def histogram(text):
     dict = {}  # creates empty dict
-    for word in text: #adding word and word frequency as key,val pairs
+    #adding word and word frequency as key,val pairs
+    for word in text: 
         if word in dict:
             dict[word] += 1
         else:
@@ -41,6 +51,18 @@ def listogram():
         words_list.append([word, 1]) #appending word and word freq to list
     return words_list
 
+
+def unique_words(listogram):
+    # returns number of unique words stored in histogram
+    return len(listogram)
+
+
+def frequency(word, histogram):
+    if word in histogram:  # checks if word is in histogram
+        return histogram[word]  # returns key value pairs
+    else:
+        return "That word is not in the histogram"  # returns error msg
+    
 '''
 Tuples Implementation of Histogram
 '''
@@ -48,7 +70,8 @@ def tuplegram():
     sample_sentence = "one fish two fish red fish blue fish"
     word_array = sample_sentence.split() #splits string into list of individual strings
     words_list = [] #creates empty list object
-    for word in word_array:
+    #accesses word in array
+    for word in word_array: 
         found = False
         for index in words_list:
             if index[0] == word:
@@ -61,14 +84,15 @@ def tuplegram():
     
     return words_list
 if __name__ == '__main__':
-    # histo_text = histo_file('siddhartha.txt')
-    # histo = histogram(histo_text)
-    # print(histo)
-    # print(unique_words(histo))
-    # print(frequency('he', histo))
+    histo_text = histo_file('siddhartha.txt')
+    histo = histogram(histo_text)
+    print(histo)
+    print(unique_words(histo))
+    print(frequency('he', histo))
 
     # listo = listogram()
     # print(listo)
+    # print(unique_words(listo))
 
-    tuplegram = tuplegram()
-    print(tuplegram)
+    # tuplegram = tuplegram()
+    # print(tuplegram)
