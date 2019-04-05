@@ -15,9 +15,9 @@ def get_words(file):
 
 ''' 
 Dictionary Implementation of Histogram
+adding word and word frequency as key,val pairs
 '''
         
- #adding word and word frequency as key,val pairs
 def histogram(text):
     dict = {}  # creates empty dict
     for word in text:
