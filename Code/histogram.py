@@ -31,9 +31,39 @@ def histogram(text):
     
     return dict
 
-def unique_words(histogram):
+def print_table(histogram):
+    print('word | count')
+    print('____________')
+    for word in histogram:
+        count = (histogram[word])
+        print(f'{word} | {count}')
+    total_count = sum(histogram.values())
+    print(total_count)
+
+def word_count_dict(histo):
+    #creates empty dict object
+    word_count = {}
+    #accessing each key in the histogram
+    for key in histo:
+    #setting key to equal value of histo key
+        new_key = histo[key] 
+
+        if new_key in word_count:
+    #appending the key to the value it matches as list
+            word_count[new_key].append(key)
+        else:
+    #adding key as new entry
+            word_count[new_key] = [key]
     
-    return len(histogram) #returns number of unique words stored in histogram
+    return word_count
+    
+
+def unique_words(histogram):
+    #returns number of unique words in histogram
+    total_count = sum(histogram.values())
+
+    # alt method also returns number of unique words stored in histogram
+    # return len(histogram)
 
 def frequency(word, histogram):
     if word in histogram: #checks if word is in histogram
@@ -55,7 +85,6 @@ def listogram():
                 index[1] += 1
         words_list.append([word, 1]) #appending word and word freq to list
     return words_list
-
 
 def unique_words(listogram):
     # returns number of unique words stored in histogram
@@ -89,15 +118,17 @@ def tuplegram():
     
     return words_list
 if __name__ == '__main__':
-    histo_text = get_words('siddhartha.txt')
-    # histo = histogram(histo_text)
+    histo_text = get_words('animals.txt')
+    histo = histogram(histo_text)
+    print(word_count_dict(histo))
+    # print_table(histo)
     # print(histo)
     # print(unique_words(histo))
     # print(frequency('he', histo))
 
-    listo = listogram()
-    print(listo)
-    print(unique_words(listo))
+    # listo = listogram()
+    # print(listo)
+    # print(unique_words(listo))
     # print(frequency('fish', listo))
 
     # tuplegram = tuplegram()
