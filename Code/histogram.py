@@ -45,7 +45,7 @@ def word_count_dict(histo):
     word_count = {}
     #accessing each key in the histogram
     for key in histo:
-    #setting key to equal value of histo key
+    #setting key to equal value or word-freq of histo key
         new_key = histo[key] 
 
         if new_key in word_count:
@@ -71,6 +71,13 @@ def frequency(word, histogram):
     else:
         return "That word is not in the histogram"  #returns error msg
 
+def histo_file(file, histogram):
+    #opens a new file to write histogram to 
+    with open(file, 'w+') as f:
+        f.write('\n Histogram\n')
+    #formatting the key value pairs to file
+        for key, val in histogram.items():
+            f.write('{}: {}\n'.format(key, val))
 
 '''
 List Implementation of Histogram
@@ -117,10 +124,13 @@ def tuplegram():
             words_list.append((word, 1))
     
     return words_list
+
 if __name__ == '__main__':
     histo_text = get_words('animals.txt')
     histo = histogram(histo_text)
-    print(word_count_dict(histo))
+    histo_file('histo.txt', histo)
+    
+    # print(word_count_dict(histo))
     # print_table(histo)
     # print(histo)
     # print(unique_words(histo))

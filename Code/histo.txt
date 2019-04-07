@@ -1,0 +1,12 @@
+
+ Histogram
+monkey: 7
+elephant: 4
+giraffe: 11
+dolphin: 3
+lion: 8
+zebra: 7
+otter: 6
+tiger: 4
+snake: 2
+penguin: 7
