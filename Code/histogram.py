@@ -91,19 +91,19 @@ def histo_file(file, histogram):
 '''
 List Implementation of Histogram
 '''
-def listogram():
-    sample_sentence = "one fish two fish red fish blue fish"
-    #splits string into list of individual strings
-    word_array = sample_sentence.split(" ")
-    words_list = [] #creates empty list object
-    for word in word_array: #accessing word in array
-        for index in words_list: #accessing index of words list
-            if index[0] == word: #counting word freq for each word
-                index[1] += 1
-        #appending word and word freq to list
-        words_list.append([word, 1]) 
+def listogram(text):
+    
+    words_list = []
+    for word in text:
+        found = False
+        for index in words_list:
+            if index[0] == word:
+                freq = index[1] + 1
+                found = True
+        if not found:
+            words_list.append([word, 1])
     return words_list
-
+    
 def unique_words(listogram):
     # returns number of unique words stored in histogram
     return len(listogram)
@@ -111,12 +111,10 @@ def unique_words(listogram):
 '''
 Tuples Implementation of Histogram
 '''
-def tuplegram():
-    sample_sentence = "one fish two fish red fish blue fish"
-    word_array = sample_sentence.split() #splits string into list of individual strings
+def tuplegram(text):
     words_list = [] #creates empty list object
     #accesses word in array
-    for word in word_array: 
+    for word in text: 
         #set found to false
         found = False
         #looping through list object 
@@ -140,8 +138,8 @@ def tuplegram():
 if __name__ == '__main__':
     histo_text = get_words('animals.txt')
     histo = histogram(histo_text)
-    sorted_histo = sorter(histo)
-    print(sorted_histo)
+    # sorted_histo = sorter(histo)
+    # print(sorted_histo)
     
     # print(word_count_dict(histo))
     # print_table(histo)
@@ -149,8 +147,8 @@ if __name__ == '__main__':
     # print(unique_words(histo))
     # print(frequency('he', histo))
 
-    # listo = listogram()
-    # print(listo)
+    listo = listogram(histo_text)
+    print(listo)
     # print(unique_words(listo))
     # print(frequency('fish', listo))
 
