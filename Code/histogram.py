@@ -58,7 +58,7 @@ def word_count_dict(histo):
     return word_count
 
 def sorter(histogram):
-    #a pkg of functions that perform python operators
+    #a pkg of functions that correspond with python operators
     import operator  
 
     '''getting key,values from histogram as list object
