@@ -64,7 +64,7 @@ def sorter(histogram):
     '''getting key,values from histogram as list object
     and sorting them in ascending order using key parameter.
     operator.itemgetter is a callable that iterates 
-    over list and grabs the first item'''
+    over list and grabs the nth item'''
 
     sorted_histo = sorted(histogram.items(), key=operator.itemgetter(0))
 
@@ -108,13 +108,6 @@ def unique_words(listogram):
     # returns number of unique words stored in histogram
     return len(listogram)
 
-
-# def frequency(word, listogram):
-#     if word in listogram:  # checks if word is in histogram
-#         return listogram[index]  # returns key value pairs
-#     else:
-#         return "That word is not in the listogram"  # returns error msg
-    
 '''
 Tuples Implementation of Histogram
 '''
