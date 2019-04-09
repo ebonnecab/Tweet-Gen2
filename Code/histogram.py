@@ -52,20 +52,27 @@ def word_count_dict(histo):
     #appending the key to the value it matches as list
             word_count[new_key].append(key)
         else:
-    #adding key as new entry
+    #adding val as new entry
             word_count[new_key] = [key]
     
     return word_count
 
-def sorter():
-    return   
+def sorter(histogram):
+    #a pkg of functions that perform python operators
+    import operator  
+
+    '''getting key,values from histogram as list object
+    and sorting them in ascending order using key parameter.
+    operator.itemgetter is a callable that iterates 
+    over list and grabs the first item'''
+
+    sorted_histo = sorted(histogram.items(), key=operator.itemgetter(0))
+
+    return sorted_histo
 
 def unique_words(histogram):
     #returns number of unique words in histogram
     total_count = sum(histogram.values())
-
-    # alt method also returns number of unique words stored in histogram
-    # return len(histogram)
 
 def frequency(word, histogram):
     if word in histogram: #checks if word is in histogram
@@ -140,8 +147,10 @@ def tuplegram():
 if __name__ == '__main__':
     histo_text = get_words('animals.txt')
     histo = histogram(histo_text)
+    sorted_histo = sorter(histo)
+    print(sorted_histo)
     
-    print(word_count_dict(histo))
+    # print(word_count_dict(histo))
     # print_table(histo)
     # print(histo)
     # print(unique_words(histo))
