@@ -56,7 +56,9 @@ def word_count_dict(histo):
             word_count[new_key] = [key]
     
     return word_count
-    
+
+def sorter():
+    return   
 
 def unique_words(histogram):
     #returns number of unique words in histogram
@@ -84,13 +86,15 @@ List Implementation of Histogram
 '''
 def listogram():
     sample_sentence = "one fish two fish red fish blue fish"
-    word_array = sample_sentence.split(" ") #splits string into list of individual strings
+    #splits string into list of individual strings
+    word_array = sample_sentence.split(" ")
     words_list = [] #creates empty list object
     for word in word_array: #accessing word in array
         for index in words_list: #accessing index of words list
-            if index[0] == word: #counting word freq for each word and creating 2d array
+            if index[0] == word: #counting word freq for each word
                 index[1] += 1
-        words_list.append([word, 1]) #appending word and word freq to list
+        #appending word and word freq to list
+        words_list.append([word, 1]) 
     return words_list
 
 def unique_words(listogram):
@@ -113,14 +117,22 @@ def tuplegram():
     words_list = [] #creates empty list object
     #accesses word in array
     for word in word_array: 
+        #set found to false
         found = False
+        #looping through list object 
         for index in words_list:
+            #if the word is in the list already
             if index[0] == word:
+                #increase frequency
                 freq = index[1] + 1
+                #remove index since tuples are immutable
                 words_list.remove(index)
+                #append word again with new freq
                 words_list.append((word, freq))
+                #set found to True
                 found = True
         if not found:
+            #if word isnt there, add the word and word freq
             words_list.append((word, 1))
     
     return words_list
@@ -128,9 +140,8 @@ def tuplegram():
 if __name__ == '__main__':
     histo_text = get_words('animals.txt')
     histo = histogram(histo_text)
-    histo_file('histo.txt', histo)
     
-    # print(word_count_dict(histo))
+    print(word_count_dict(histo))
     # print_table(histo)
     # print(histo)
     # print(unique_words(histo))
@@ -143,3 +154,5 @@ if __name__ == '__main__':
 
     # tuplegram = tuplegram()
     # print(tuplegram)
+
+    # histo_file('histo.txt', histo)
