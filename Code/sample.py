@@ -14,8 +14,8 @@ def print_probability(histogram):
     total_freq = sum(histogram.values())
    
     #prints out probability of word being picked
-    for key, val in histogram.items():
-        print("{} = {}".format(key,val/total_freq))
+    for word, freq in histogram.items():
+        print("{} = {}".format(word,freq/total_freq))
 
 def sample(histogram):
     #gets total count of unique words
