@@ -9,24 +9,24 @@ from histogram import get_tokens
 from histogram import listogram
 
 def print_probability(histogram):
-    #gets total count of unique words
-    word_count = sum(histogram.values())
 
+    #gets total count of unique words
+    total_freq = sum(histogram.values())
+   
     #prints out probability of word being picked
     for key, val in histogram.items():
-        print("{} = {}".format(key,val/word_count))
+        print("{} = {}".format(key,val/total_freq))
 
 def sample(histogram):
     #gets total count of unique words
-    word_count = sum(histogram.values())
-
+    total_freq = sum(histogram.values())
     #creating chance variable for random sampling
     chance = 0
-    random_num = random.random()
+    random_num = random.uniform(0,1)
     
     #returns random sample word
     for word in histogram:
-        chance += histogram[word]/word_count
+        chance += histogram[word]/total_freq
         if chance >= random_num:
             return word
 
@@ -34,7 +34,7 @@ def test_probability(histogram):
     #created dict to store results
     outcomes = []
     #the number of times I want to run the test
-    n = 1000
+    n = 10000
 
     #appending sample word to list n times
     for i in range(0, n):
@@ -54,41 +54,49 @@ def results_histogram(outcomes):
     return results
 
 '''
-List Implementation of sampling function
+List Implementation of sampling function. Doesn't quite work yet.
 '''
 def print_probability2(listogram):
     #gets total word count
-    word_count = len(listogram)
+    total_freq = 0
+    
+    for index in listogram:
+        total_freq += index[1]
 
     #printing out probability of word being picked
     for index in listogram:
-        print("{} = {}".format(index[0],index[1]/word_count))
+        print("{} = {}".format(index[0],index[1]/total_freq))
 
 def list_sampling(listogram):
     #gets total word count
-    word_count = sum(listogram)
-    
+    total_freq = 0
     #creating chance variable
     chance = 0
-    random_num = random.random()
+    
+    for index in listogram:
+        total_freq += index[1]
+
+    print(total_freq)
+    random_num = random.uniform(0,1)
 
     #returns random sample words
     for index in listogram:
-        chance += index[1]/word_count 
+        chance += index[1]/total_freq
         if chance >= random_num:
             return index[0]
 
 if __name__ == '__main__':
-    histo_text = get_words('animals.txt')
+    histo_text = get_words('fish.txt')
     clean_text = get_tokens(histo_text)
     histo = histogram(clean_text)
     sample_word = sample(histo)
-    # probability = print_probability(histo)
-    # print(sample_word)
+    probability = print_probability(histo)
+    print(sample_word)
     outcomes = test_probability(histo)
     results = results_histogram(outcomes)
-    # print(results)
+    print(results)
     # listo = listogram(clean_text)
+    # print(listo)
     # sample_word2 = list_sampling(listo)
     # print(sample_word2)
     # probability2 = print_probability2(listo)
