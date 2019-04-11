@@ -109,10 +109,10 @@ def histo_file(file, histogram):
 '''
 List Implementation of Histogram
 '''
-def listogram(text):
+def listogram(words):
     
     words_list = []
-    for word in text:
+    for word in words:
         found = False
         for index in words_list:
             if index[0] == word:
@@ -161,14 +161,14 @@ if __name__ == '__main__':
     # sorted_histo = sorter(histo)
     # print(sorted_histo)
     
-    print(word_count_dict(histo))
+    # print(word_count_dict(histo))
     # print_table(histo)
     # print(histo)
     # print(unique_words(histo))
     # print(frequency('he', histo))
 
-    # listo = listogram(histo_text)
-    # print(listo)
+    listo = listogram(clean_text)
+    print(listo)
     # print(unique_words(listo))
     # print(frequency('fish', listo))
 
