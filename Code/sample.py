@@ -86,15 +86,22 @@ def list_sampling(listogram):
             return index[0]
 
 if __name__ == '__main__':
+    #using histogram functions to get corpus
     histo_text = get_words('fish.txt')
     clean_text = get_tokens(histo_text)
     histo = histogram(clean_text)
+
+    #sampling using dictionary method
     sample_word = sample(histo)
     probability = print_probability(histo)
     print(sample_word)
+
+    #testing that sampling function actually works
     outcomes = test_probability(histo)
     results = results_histogram(outcomes)
     print(results)
+
+    #list implementation of sampling
     # listo = listogram(clean_text)
     # print(listo)
     # sample_word2 = list_sampling(listo)
