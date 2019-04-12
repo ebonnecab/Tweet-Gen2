@@ -13,6 +13,9 @@ def word_shuffle(word_array):
         #swaps original index with rand index
         word_array[index], word_array[random_index] = word_array[random_index], word_array[index] 
 
+    return word_array
+    
+def sentence_maker(word_array):
     #joining word array into a sentence
     sentence = ' '.join(word_array) + '.'
     sentence = sentence.capitalize()
@@ -20,5 +23,6 @@ def word_shuffle(word_array):
 
 if __name__ == '__main__':
     user_input = sys.argv[1:]
-    test = word_shuffle(user_input)
+    array = word_shuffle(user_input)
+    test = sentence_maker(array)
     print(test)
