@@ -94,12 +94,12 @@ if __name__ == '__main__':
     #sampling using dictionary method
     sample_word = sample(histo)
     probability = print_probability(histo)
-    print(sample_word)
+    # print(sample_word)
 
     #testing that sampling function actually works
-    outcomes = test_probability(histo)
-    results = results_histogram(outcomes)
-    print(results)
+    # outcomes = test_probability(histo)
+    # results = results_histogram(outcomes)
+    # print(results)
 
     #list implementation of sampling
     # listo = listogram(clean_text)
