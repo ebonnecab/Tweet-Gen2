@@ -2,7 +2,6 @@ from flask import Flask
 from histogram import histogram
 from histogram import histogram
 from histogram import get_words
-from histogram import get_tokens
 from histogram import listogram
 from sample import sample
 from rearrange import sentence_maker
@@ -14,8 +13,7 @@ app = Flask(__name__)
 @app.route('/words/<int:num>')
 def hello_world(num):
     histo_text = get_words('siddhartha.txt')
-    clean_text = get_tokens(histo_text)
-    histo = histogram(clean_text)
+    histo = histogram(histo_text)
     random_word = sample(histo)
     random_words = []
     for i in range(num):
