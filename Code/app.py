@@ -22,3 +22,8 @@ def hello_world(num):
         random_words.append(sample(histo))
     random_sentence = sentence_maker(random_words)
     return HTML.format(random_sentence)
+
+ if __name__ == '__main__':
+     app.debug = True
+     port = int(os.environ.get("PORT", 5000))
+     app.run(host='0.0.0.0', port=port)
