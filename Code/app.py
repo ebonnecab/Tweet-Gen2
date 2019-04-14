@@ -15,14 +15,14 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/words/<int:num>')
-def hello_world(num):
+@app.route('/words')
+def tweet_gen():
     histo_text = get_words('siddhartha.txt')
     clean_text = get_tokens(histo_text)
     histo = histogram(clean_text)
     random_word = sample(histo)
     random_words = []
-    for i in range(num):
+    for i in range(7):
         random_words.append(sample(histo))
     random_sentence = sentence_maker(random_words)
     return HTML.format(random_sentence)
