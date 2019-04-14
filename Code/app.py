@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from histogram import histogram
 from histogram import histogram
 from histogram import get_words
@@ -10,6 +10,10 @@ from rearrange import sentence_maker
 HTML="""<html><head><title>My App</title></head>
         <body><h2>{}</h2></body"""
 app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 @app.route('/words/<int:num>')
 def hello_world(num):
