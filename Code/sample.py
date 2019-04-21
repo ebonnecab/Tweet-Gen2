@@ -36,7 +36,7 @@ def sample(histogram):
             return word
 
 def test_probability(histogram):
-    #created dict to store results
+    #created list to append results
     outcomes = []
     #the number of times I want to run the test
     n = 10000
