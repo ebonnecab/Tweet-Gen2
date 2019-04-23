@@ -101,18 +101,6 @@ def listogram(words):
         if not found:
             words_list.append([word, 1])
     return words_list
-
-    #histogram list implementation
-# def histogram_list():
-#     sample_sentence = "one fish two fish red fish blue fish"
-#     word_array = sample_sentence.split(" ")
-#     words_list = []
-#     for word in word_array:
-#         for index in words_list:
-#             if index[0] == word:
-#                 index[1] += 1
-#         words_list.append([word, 1])
-    # return words_list
     
 def unique_words(listogram):
     # returns number of unique words stored in histogram
