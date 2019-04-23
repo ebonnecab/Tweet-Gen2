@@ -34,22 +34,24 @@ def markov_walk(corpus):
 
     return markov_dict
 
-def start_word(markov_dict):
+def start_word(markov_dict, word):
     rand_word = random.choice(list(markov_dict.keys()))
     return rand_word
 
 def generate_sentence(markov_dict):
     length = 10
     first_word = list(markov_dict.keys())[0]
-    second_word = start_word(markov_dict)
+    second_word = start_word(markov_dict, first_word)
     sentence = first_word + ' ' + second_word
+    prev_word = second_word
 
     for word in range(0, random.randint(1, length)):
-        next_word = start_word(markov_dict)
+        next_word = start_word(markov_dict, prev_word)
+        prev_word = next_word
         sentence += ' ' + next_word + ' '
     return sentence
 if __name__ == '__main__':
-    corpus = get_corpus('siddhartha.txt')
+    corpus = get_corpus('fish.txt')
     chain = markov_walk(corpus)
     sentence = generate_sentence(chain)
     print(sentence)
