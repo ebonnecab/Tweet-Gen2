@@ -15,31 +15,15 @@ def markov_walk(corpus):
     markov_dict = {}
     pairs = get_pairs(corpus)
 
-    for first_word, second_word in pairs:
-        if first_word in markov_dict.keys():
-            markov_dict[first_word].append(second_word)
+    for word_1, word_2 in pairs:
+        if word_1 in markov_dict.keys():
+            markov_dict[word_1].append(word_2)
         else:
-            markov_dict[first_word] = [second_word]
+            markov_dict[word_1] = [word_2]
 
     return markov_dict
 
-# def markov_walk(corpus):
-#     markov_dict = {}
-    
-#     for word in corpus:
-#         if word not in markov_dict:
-#             markov_dict[word] = {}
-    
-#     index = 0
-#     if index + 1 < len(corpus):
-#         next_word = corpus[index+1]
-#         if next_word in markov_dict[word].keys():
-#             markov_dict[word][next_word] += 1
-#         else:
-#             markov_dict[word][next_word] = 1
-#         index +=1
-#     print(index)
-#     return markov_dict
+
 
 # def start_word(markov_dict, word):
 #     rand_word = random.choice(list(markov_dict.keys()))
