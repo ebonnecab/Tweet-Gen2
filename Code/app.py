@@ -1,11 +1,6 @@
 from flask import Flask, render_template
 from generator import sentence_gen
-# from histogram import histogram
-# from histogram import histogram
-# from histogram import get_words
-# from histogram import listogram
-# from sample import sample
-# from rearrange import sentence_maker
+
 
 HTML="""<html><head><title>My App</title></head>
         <body><h2>{}</h2></body>"""
