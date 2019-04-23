@@ -38,12 +38,12 @@ def generate_sentence(markov_dict):
     for word in range(0, random.randint(1, length)):
         next_word = start_word(markov_dict, prev_word)
         prev_word = next_word
-        sentence += next_word + ' '
+        sentence += ' ' + next_word + ' '
     return sentence
 if __name__ == '__main__':
     corpus = get_corpus('fish.txt')
     chain = markov_walk(corpus)
-    # print(chain)
+    print(chain)
     sentence = generate_sentence(chain)
     print(sentence)
     
