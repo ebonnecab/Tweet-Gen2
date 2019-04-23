@@ -34,25 +34,36 @@ def markov_walk(corpus):
 
     return markov_dict
 
-def start_word(markov_dict, word):
+''' 
+Picks a random start word for markov walk from list of dict keys
+'''
+def start_word(markov_dict):
     rand_word = random.choice(list(markov_dict.keys()))
     return rand_word
 
+'''
+doing a markov walk to create a sentence from dictionary
+generated above. once key is accessed, a random pairing is picked
+from the values associated and the markov walk restarts
+for random length of sentence
+'''
 def generate_sentence(markov_dict):
     length = 10
-    first_word = list(markov_dict.keys())[0]
-    second_word = start_word(markov_dict, first_word)
-    sentence = first_word + ' ' + second_word
-    prev_word = second_word
+    first_word = start_word(markov_dict)
+    sentence = first_word.capitalize()
 
     for word in range(0, random.randint(1, length)):
-        next_word = start_word(markov_dict, prev_word)
-        prev_word = next_word
-        sentence += ' ' + next_word + ' '
+        second_word = random.choice(markov_dict[first_word])
+        first_word = second_word
+        sentence += ' ' + second_word
+    
     return sentence
+
+
 if __name__ == '__main__':
     corpus = get_corpus('fish.txt')
     chain = markov_walk(corpus)
+    print(chain)
     sentence = generate_sentence(chain)
     print(sentence)
     
