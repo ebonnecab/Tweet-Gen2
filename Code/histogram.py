@@ -90,18 +90,29 @@ def histo_file(file, histogram):
 '''
 List Implementation of Histogram
 '''
-def listogram(words):
-    
+def listogram(words):    
     words_list = []
     for word in words:
         found = False
         for index in words_list:
             if index[0] == word:
-                freq = index[1] + 1
+                index[1] += 1
                 found = True
         if not found:
             words_list.append([word, 1])
     return words_list
+
+    #histogram list implementation
+# def histogram_list():
+#     sample_sentence = "one fish two fish red fish blue fish"
+#     word_array = sample_sentence.split(" ")
+#     words_list = []
+#     for word in word_array:
+#         for index in words_list:
+#             if index[0] == word:
+#                 index[1] += 1
+#         words_list.append([word, 1])
+    # return words_list
     
 def unique_words(listogram):
     # returns number of unique words stored in histogram
@@ -135,9 +146,9 @@ def tuplegram(text):
     return words_list
 
 if __name__ == '__main__':
-    histo_text = get_words('siddhartha.txt')
+    histo_text = get_words('fish.txt')
     histo = histogram(histo_text)
-    print(histo)
+    # print(histo)
     # sorted_histo = sorter(histo)
     # print(sorted_histo)
     
@@ -147,8 +158,8 @@ if __name__ == '__main__':
     # print(unique_words(histo))
     # print(frequency('he', histo))
 
-    # listo = listogram(clean_text)
-    # print(listo)
+    listo = listogram(histo_text)
+    print(listo)
     # print(unique_words(listo))
     # print(frequency('fish', listo))
 
