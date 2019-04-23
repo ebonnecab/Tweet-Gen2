@@ -1,7 +1,6 @@
 from histogram import histogram
 from histogram import get_words
 import random
-from dictogram import Dictogram
 
 '''
 uses imported function to get individual words from corpus
