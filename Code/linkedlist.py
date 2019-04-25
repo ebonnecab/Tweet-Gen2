@@ -68,42 +68,90 @@ class LinkedList(object):
     def append(self, item):
         """Insert the given item at the tail of this linked list.
         TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Create new node to hold given item
+
+        #Create new node to hold given item
         new_node = Node(item)
-        # TODO: Append node after tail, if it exists
+        #checking if list is empty, if so make new node head & tail
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+            return
+        #if list is not empty continue to traverse
+        else:
+            current_node = self.head
+    
+        #looping through whole list
+            while current_node.next is not None:
+                current_node = current_node.next
+            
+        #if tail, add new node
+            current_node.next = new_node
+        #set prev pointer to current node
+            new_node.prev = current_node
+        #sets tail to equal new node
+            self.tail = new_node
+
+    def prepend(self, item):
+        """Insert the given item at the head of this linked list.
+        TODO: Running time: O(???) Why and under what conditions?"""
+        #Create new node to hold given item
+        new_node = Node(item)
+        #check if list is empty, if so make new node head & tail
         if self.head is None:
             self.head = new_node
             self.tail = new_node
             return
         else:
             current_node = self.head
-    
-            while current_node.next is not None:
-                current_node = current_node.next
-        
-            current_node.next = new_node
-            self.tail = new_node
-
-    def prepend(self, item):
-        """Insert the given item at the head of this linked list.
-        TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Create new node to hold given item
-        # TODO: Prepend node before head, if it exists
+            #set head and prev pointer to new node
+            self.head = new_node
+            current_node.prev = new_node
+            #next pointer directs you back to head
+            new_node.next = current_node
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
         TODO: Best case running time: O(???) Why and under what conditions?
         TODO: Worst case running time: O(???) Why and under what conditions?"""
-        # TODO: Loop through all nodes to find item where quality(item) is True
-        # TODO: Check if node's data satisfies given quality function
+        # set current node to head for traversing
+        current_node = self.head
+
+        #looping through node to find if quality(item) is true
+        while current_node is not None:
+         #check if node's data satisfies given quality function
+            if quality(current_node.data):
+                return current_node.data
+            else:
+                current_node = current_node.next
+        return None
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
         TODO: Best case running time: O(???) Why and under what conditions?
         TODO: Worst case running time: O(???) Why and under what conditions?"""
-        # TODO: Loop through all nodes to find one whose data matches given item
-        # TODO: Update previous node to skip around node with matching data
-        # TODO: Otherwise raise error to tell user that delete has failed
+
+        extra_node = Node(item)
+        current_node = self.head
+        prev_node = None
+        found = False
+        
+        #Loop through all nodes to find one whose data matches given item
+        while current_node is not None:
+            if current_node.data == item:
+                found = True
+        #Update previous node to skip around node with matching data
+                if prev_node is not None:
+                    prev_node.next = current_node.next
+                else:
+                    self.head = current_node.next
+                if current_node.next == None:
+                    self.tail = prev_node
+        
+            prev_node = current_node
+            current_node = current_node.next
+        # Otherwise raise error to tell user that delete has failed
+        if not found:
+            raise ValueError('Item not found: {}'.format(item))
         # Hint: raise ValueError('Item not found: {}'.format(item))
 
 
