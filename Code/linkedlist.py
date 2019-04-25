@@ -132,6 +132,7 @@ class LinkedList(object):
 
         extra_node = Node(item)
         current_node = self.head
+        prev_node = None
         found = False
         
         #Loop through all nodes to find one whose data matches given item
