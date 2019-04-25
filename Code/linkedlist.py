@@ -76,7 +76,7 @@ class LinkedList(object):
             self.tail.next = new_node
             self.tail = new_node
             return
-        #if list is empty, if so make new node head & tail
+        #if list is empty make new node head & tail
         else:
             self.head = new_node
             self.tail = new_node
@@ -144,7 +144,6 @@ class LinkedList(object):
         # Otherwise raise error to tell user that delete has failed
         if not found:
             raise ValueError('Item not found: {}'.format(item))
-        # Hint: raise ValueError('Item not found: {}'.format(item))
     
     def replace(self, item):
         return
