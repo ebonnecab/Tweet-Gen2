@@ -132,7 +132,6 @@ class LinkedList(object):
 
         extra_node = Node(item)
         current_node = self.head
-        prev_node = None
         found = False
         
         #Loop through all nodes to find one whose data matches given item
@@ -140,6 +139,7 @@ class LinkedList(object):
             if current_node.data == item:
                 found = True
         #Update previous node to skip around node with matching data
+                current_node.prev = prev_node
                 if prev_node is not None:
                     prev_node.next = current_node.next
                 else:
@@ -153,7 +153,15 @@ class LinkedList(object):
         if not found:
             raise ValueError('Item not found: {}'.format(item))
         # Hint: raise ValueError('Item not found: {}'.format(item))
+    
+    def replace(self, item):
+        return
+        # extra_node = Node(item)
+        # current_node = self.head
+        # prev_node = None
+        # found = False
 
+        # while current_node is not None:
 
 def test_linked_list():
     ll = LinkedList()
