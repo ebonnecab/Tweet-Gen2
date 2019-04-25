@@ -71,25 +71,16 @@ class LinkedList(object):
 
         #Create new node to hold given item
         new_node = Node(item)
-        #checking if list is empty, if so make new node head & tail
-        if self.head is None:
-            self.head = new_node
+        #if tail is exists set pointer to new node and change tail to new node
+        if self.tail is not None:
+            self.tail.next = new_node
             self.tail = new_node
             return
-        #if list is not empty continue to traverse
+        #if list is empty, if so make new node head & tail
         else:
-            current_node = self.head
-    
-        #looping through whole list
-            while current_node.next is not None:
-                current_node = current_node.next
-            
-        #if tail, add new node
-            current_node.next = new_node
-        #set prev pointer to current node
-            new_node.prev = current_node
-        #sets tail to equal new node
+            self.head = new_node
             self.tail = new_node
+           
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
