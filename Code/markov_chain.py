@@ -1,5 +1,6 @@
 from histogram import histogram
 from histogram import get_words
+from sample import sample
 import random
 
 '''
@@ -24,7 +25,7 @@ and appends their pairs as values for that key
 def markov_walk(corpus):
     markov_dict = {}
     pairs = get_pairs(corpus)
-
+    
     for word_1, word_2 in pairs:
         if word_1 in markov_dict.keys():
             markov_dict[word_1].append(word_2)
@@ -32,6 +33,17 @@ def markov_walk(corpus):
             markov_dict[word_1] = [word_2]
 
     return markov_dict
+
+#trying to refactor account for word freq
+
+    #  for word_1, word_2 in pairs:
+    #     if word_1 in markov_dict.keys():
+
+    #         markov_dict[word_1].append((word_2, count))
+    #     else:
+    #         markov_dict[word_1] = [(word_2, count)]
+
+    # return markov_dict
 
 ''' 
 Picks a random start word for markov walk from list of dict keys
@@ -63,6 +75,6 @@ if __name__ == '__main__':
     corpus = get_corpus('fish.txt')
     chain = markov_walk(corpus)
     print(chain)
-    sentence = generate_sentence(chain)
-    print(sentence)
+    # sentence = generate_sentence(chain)
+    # print(sentence)
     

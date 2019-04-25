@@ -7,6 +7,7 @@ class Node(object):
         """Initialize this node with the given data."""
         self.data = data
         self.next = None
+        self.prev = None
 
     def __repr__(self):
         """Return a string representation of this node."""
@@ -56,12 +57,32 @@ class LinkedList(object):
         """Return the length of this linked list by traversing its nodes.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes and count one for each
+        node = self.head
+        count = 0
+        #looping throough nodes
+        while node is not None:
+            count += 1
+            node = node.next
+        return count
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Create new node to hold given item
+        new_node = Node(item)
         # TODO: Append node after tail, if it exists
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+            return
+        else:
+            current_node = self.head
+    
+            while current_node.next is not None:
+                current_node = current_node.next
+        
+            current_node.next = new_node
+            self.tail = new_node
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
