@@ -75,7 +75,7 @@ class LinkedList(object):
         if self.tail is not None:
             self.tail.next = new_node
             self.tail = new_node
-            return
+            # return
         #if list is empty make new node head & tail
         else:
             self.head = new_node
@@ -111,9 +111,12 @@ class LinkedList(object):
         while current_node is not None:
          #check if node's data satisfies given quality function
             if quality(current_node.data):
+                #return the data that satisfies the quality function
                 return current_node.data
             else:
+                #otherwise, skip to the next node
                 current_node = current_node.next
+        #if the data never pops up return None
         return None
 
     def delete(self, item):
@@ -128,17 +131,23 @@ class LinkedList(object):
         
         #Loop through all nodes to find one whose data matches given item
         while current_node is not None:
-            if current_node.data == item:
+            if current_node.data == extra_node.data:
                 found = True
         #Update previous node to skip around node with matching data
                 current_node.prev = prev_node
+                #check that there is a prev node
                 if prev_node is not None:
+                #change prev node to point to node after current node
                     prev_node.next = current_node.next
                 else:
+                #otherwise  set head to reference node after curent
                     self.head = current_node.next
+                #if there is no node after current
                 if current_node.next == None:
+                #set tail to be the prior node before current one
                     self.tail = prev_node
         
+            #
             prev_node = current_node
             current_node = current_node.next
         # Otherwise raise error to tell user that delete has failed
