@@ -66,25 +66,46 @@ class HashTable(object):
     def contains(self, key):
         """Return True if this hash table contains the given key, or False.
         TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Find bucket where given key belongs
-        # TODO: Check if key-value entry exists in bucket
+        #Find bucket where given key belongs
+        for bucket in self.buckets:
+            for current_key, val in bucket.items():
+        #Check if key-value entry exists in bucket
+                if current_key is key:
+                    return True
+        return False
 
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
         TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Find bucket where given key belongs
-        # TODO: Check if key-value entry exists in bucket
-        # TODO: If found, return value associated with given key
-        # TODO: Otherwise, raise error to tell user get failed
-        # Hint: raise KeyError('Key not found: {}'.format(key))
+        #Find bucket where given key belongs
+        index = self._bucket_index
+        bucket = self.buckets[index(key)]
+        #Check if key-value entry exists in bucket
+        key_matcher = lambda key_val: key_val[0] == key
+        entry_found = bucket.find(key_matcher)
+        #If found, return value associated with given key
+        if entry_found is not None:
+            return entry_found[1]
+        #Otherwise, raise error to tell user get failed
+        else:
+            raise KeyError('Key not found: {}'.format(key))
 
     def set(self, key, value):
         """Insert or update the given key with its associated value.
         TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Find bucket where given key belongs
-        # TODO: Check if key-value entry exists in bucket
-        # TODO: If found, update value associated with given key
-        # TODO: Otherwise, insert given key-value entry into bucket
+        #Find bucket where given key belongs
+        index = self._bucket_index
+        bucket = self.buckets[index(key)]
+        #Check if key-value entry exists in bucket
+        key_matcher = lambda key_val: key_val[0] == key
+        entry_found = bucket.find(key_matcher) # 0(l) with l = bucket.length()
+
+        #If found, update value associated with given key
+        if entry_found is not None:
+            bucket.delete(entry_found)
+        #Otherwise, insert given key-value entry into bucket
+        entry_found = (key, value)
+        bucket.append((key, value))
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
