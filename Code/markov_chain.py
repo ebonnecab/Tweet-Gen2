@@ -1,6 +1,8 @@
 from histogram import histogram
 from histogram import get_words
 from sample import sample
+from dictogram import Dictogram
+from listogram import Listogram
 import random
 
 '''
@@ -28,9 +30,9 @@ def markov_walk(corpus):
     
     for word_1, word_2 in pairs:
         if word_1 in markov_dict.keys():
-            markov_dict[word_1].append(word_2)
+            markov_dict[word_1].add_count(word_2)
         else:
-            markov_dict[word_1] = [word_2]
+            markov_dict[word_1] = Dictogram([word_2])
 
     return markov_dict
 
