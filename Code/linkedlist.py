@@ -60,7 +60,7 @@ class LinkedList(object):
         #Loop through all nodes and count one for each
         node = self.head
         count = 0
-        
+
         #looping throough nodes
         while node is not None:
             count += 1
@@ -104,22 +104,24 @@ class LinkedList(object):
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
-        TODO: Best case running time: O(???) Why and under what conditions?
-        TODO: Worst case running time: O(???) Why and under what conditions?"""
+        Best case running time: O(1) if the data is in the first node
+        Worst case running time: O(n) if we have to iterate over every node
+        where n is number of items stored in linked list"""
+        
         # set current node to head for traversing
-        current_node = self.head
+        current_node = self.head # O(1)
 
         #looping through node to find if quality(item) is true
-        while current_node is not None:
+        while current_node is not None: #runtime between 1 and n interations
          #check if node's data satisfies given quality function
-            if quality(current_node.data):
+            if quality(current_node.data):  # O(1)
                 #return the data that satisfies the quality function
-                return current_node.data
+                return current_node.data   # O(1)
             else:
                 #otherwise, skip to the next node
-                current_node = current_node.next
+                current_node = current_node.next  # O(1)
         #if the data never pops up return None
-        return None
+        return None  # O(1)
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
