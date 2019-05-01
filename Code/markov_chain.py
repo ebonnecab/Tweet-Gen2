@@ -36,16 +36,6 @@ def markov_walk(corpus):
 
     return markov_dict
 
-#trying to refactor account for word freq
-
-    #  for word_1, word_2 in pairs:
-    #     if word_1 in markov_dict.keys():
-
-    #         markov_dict[word_1].append((word_2, count))
-    #     else:
-    #         markov_dict[word_1] = [(word_2, count)]
-
-    # return markov_dict
 
 ''' 
 Picks a random start word for markov walk from list of dict keys
@@ -65,8 +55,8 @@ def generate_sentence(markov_dict):
     first_word = start_word(markov_dict)
     sentence = first_word.capitalize()
 
-    for word in range(0, random.randint(1, length)):
-        second_word = random.choice(markov_dict[first_word])
+    for word in range(random.randint(1, length)):
+        second_word = sample(markov_dict[first_word])
         first_word = second_word
         sentence += ' ' + second_word
     
@@ -76,7 +66,7 @@ def generate_sentence(markov_dict):
 if __name__ == '__main__':
     corpus = get_corpus('fish.txt')
     chain = markov_walk(corpus)
-    print(chain)
-    # sentence = generate_sentence(chain)
-    # print(sentence)
+    # print(chain)
+    sentence = generate_sentence(chain)
+    print(sentence)
     
