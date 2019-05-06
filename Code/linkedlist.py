@@ -94,7 +94,7 @@ class LinkedList(object):
         new_node = Node(item) # O(1) time to assign new variable
 
         #check if list is empty, if so make new node head & tail
-        if self.head is None:
+        if self.head is None: # O(1) because it only checks if head is empty or not
             self.head = new_node
             self.tail = new_node
             return
@@ -129,8 +129,8 @@ class LinkedList(object):
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
-        TODO: Best case running time: O(???) Why and under what conditions?
-        TODO: Worst case running time: O(???) Why and under what conditions?"""
+        Best case running time: O(1) because the item could be first in the list
+        Worst case running time: O(n) because you could end up looping through all the nodes"""
 
         extra_node = Node(item)
         current_node = self.head
