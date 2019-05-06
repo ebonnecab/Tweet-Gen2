@@ -70,10 +70,11 @@ class LinkedList(object):
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        Running time: O(1) because we start at tail and then just append new node"""
 
         #Create new node to hold given item
-        new_node = Node(item)
+        new_node = Node(item) # O(1) to create new object
+
         #if tail is exists set pointer to new node and change tail to new node
         if self.tail is not None:
             self.tail.next = new_node
@@ -87,9 +88,11 @@ class LinkedList(object):
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        Best and worse case runtime is O(1) because we only change the first node"""
+        
         #Create new node to hold given item
-        new_node = Node(item)
+        new_node = Node(item) # O(1) time to assign new variable
+
         #check if list is empty, if so make new node head & tail
         if self.head is None:
             self.head = new_node
