@@ -160,16 +160,7 @@ class LinkedList(object):
             current_node = current_node.next
         # Otherwise raise error to tell user that delete has failed
         if not found:
-            raise ValueError('Item not found: {}'.format(item))
-    
-    def replace(self, item):
-        return
-        # extra_node = Node(item)
-        # current_node = self.head
-        # prev_node = None
-        # found = False
-
-        # while current_node is not None:
+            raise ValueError('Item not found: {}'.format(item))    
 
 def test_linked_list():
     ll = LinkedList()
