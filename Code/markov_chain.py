@@ -40,6 +40,10 @@ def markov_walk(corpus):
 
     return markov_dict
 
+'''
+this function stores tuples as keys and the third word that follows 
++ it's frequency as the value for that key
+'''
 
 def second_order_walk(corpus):
     markov_dict = {}
@@ -78,6 +82,13 @@ def generate_sentence(markov_dict):
     
     return sentence
 
+def second_order_sentence(markov_dict):
+    tuples = list(markov_dict.keys())[0]
+    start_words = start_word(markov_dict)
+    sentence = start_words[0].capitalize() + ' ' + start_words[1]
+    print(sentence)
+    
+
 
 if __name__ == '__main__':
     corpus = get_corpus('fish.txt')
@@ -86,5 +97,6 @@ if __name__ == '__main__':
     # sentence = generate_sentence(chain)
     # print(sentence)
     test = second_order_walk(corpus)
-    print(test)
+    sentence = second_order_sentence(test)
+    
     
