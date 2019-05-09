@@ -83,11 +83,18 @@ def generate_sentence(markov_dict):
     return sentence
 
 def second_order_sentence(markov_dict):
-    tuples = list(markov_dict.keys())[0]
-    start_words = start_word(markov_dict)
-    sentence = start_words[0].capitalize() + ' ' + start_words[1]
-    print(sentence)
+    length = 10
+    first_words = start_word(markov_dict)
+    sentence = first_words[0].capitalize() + ' ' + first_words[1] + ' '
     
+    for word in range(random.randint(1, length)):
+        next_word = sample(markov_dict[first_words])
+        next_words = (first_words[1], next_word)
+        first_words = next_words
+        sentence += next_word + ' '
+        if next_words not in markov_dict:
+            return sentence
+    return sentence
 
 
 if __name__ == '__main__':
@@ -98,5 +105,6 @@ if __name__ == '__main__':
     # print(sentence)
     test = second_order_walk(corpus)
     sentence = second_order_sentence(test)
+    print(sentence)
     
     
