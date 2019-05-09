@@ -78,7 +78,7 @@ class HashTable(object):
 
     def contains(self, key):
         """Return True if this hash table contains the given key, or False.
-           Running time: O(l) """
+           Running time: O(l) where l is the length of bucket due to find method """
         
         #Find bucket where given key belongs
         index = self._bucket_index # O(1) to calculate index
@@ -89,7 +89,7 @@ class HashTable(object):
         entry_found = bucket.find(key_matcher) # 0(l) with l = bucket.length()
         
         #check if entry was found and return results
-        return entry_found is not None
+        return entry_found is not None # O(1)
         
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
@@ -112,7 +112,7 @@ class HashTable(object):
 
     def set(self, key, value):
         """Insert or update the given key with its associated value.
-        Running time: O(l) because it depends on length of hashtable"""
+        Running time: O(l) because it depends on length of buckets"""
 
         #Find bucket where given key belongs
         index = self._bucket_index # O(1) to calculate index
@@ -123,12 +123,12 @@ class HashTable(object):
         entry_found = bucket.find(key_matcher) # 0(l) with l = bucket.length()
 
         #If found, update value associated with given key
-        if entry_found is not None:
-            bucket.delete(entry_found)
-
+        if entry_found is not None: 
+            bucket.delete(entry_found) # O(l)
+                
         #Otherwise, insert given key-value entry into bucket
-        entry_found = (key, value)
-        bucket.append((key, value))
+        new_entry = (key, value) # O(1)
+        bucket.append((new_entry)) # O(1)
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.

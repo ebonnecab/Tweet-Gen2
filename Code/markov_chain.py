@@ -20,6 +20,10 @@ def get_pairs(corpus):
     for index in range(len(corpus)-1):
         yield(corpus[index], corpus[index+1])
 
+def get_three_words(corpus):
+    for index in range(len(corpus)-2):
+        yield(corpus[index], corpus[index + 1], corpus[index + 2])
+
 '''
 this function stores each individual word as keys
 and appends their pairs as values for that key
@@ -37,6 +41,18 @@ def markov_walk(corpus):
     return markov_dict
 
 
+def second_order_walk(corpus):
+    markov_dict = {}
+    three_words = (get_three_words(corpus))
+    
+    for word_1, word_2, word_3 in three_words:
+        tuple = (word_1, word_2)
+        if tuple not in markov_dict:
+            add_tuple = Dictogram([word_3])
+            markov_dict[tuple] = add_tuple
+        else:
+            markov_dict[tuple].add_count(word_3)
+    return markov_dict
 ''' 
 Picks a random start word for markov walk from list of dict keys
 '''
@@ -67,6 +83,8 @@ if __name__ == '__main__':
     corpus = get_corpus('fish.txt')
     chain = markov_walk(corpus)
     # print(chain)
-    sentence = generate_sentence(chain)
-    print(sentence)
+    # sentence = generate_sentence(chain)
+    # print(sentence)
+    test = second_order_walk(corpus)
+    print(test)
     
