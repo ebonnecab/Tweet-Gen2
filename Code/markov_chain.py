@@ -2,7 +2,6 @@ from histogram import histogram
 from histogram import get_words
 from sample import sample
 from dictogram import Dictogram
-from listogram import Listogram
 import random
 
 '''
@@ -57,6 +56,9 @@ def second_order_walk(corpus):
         else:
             markov_dict[tuple].add_count(word_3)
     return markov_dict
+
+def nth_order_walk(corpus):
+
 ''' 
 Picks a random start word for markov walk from list of dict keys
 '''
@@ -89,16 +91,16 @@ def second_order_sentence(markov_dict):
     
     for word in range(random.randint(1, length)):
         next_word = sample(markov_dict[first_words])
-        next_words = (first_words[1], next_word)
-        first_words = next_words
+        prev_words = (first_words[1], next_word)
+        first_words = prev_words
         sentence += next_word + ' '
-        if next_words not in markov_dict:
+        if prev_words not in markov_dict:
             return sentence
     return sentence
 
 
 if __name__ == '__main__':
-    corpus = get_corpus('fish.txt')
+    corpus = get_corpus('siddhartha.txt')
     chain = markov_walk(corpus)
     # print(chain)
     # sentence = generate_sentence(chain)

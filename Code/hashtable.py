@@ -26,25 +26,25 @@ class HashTable(object):
 
     def keys(self):
         """Return a list of all keys in this hash table.
-        Running time: O(l) because we loop through the buckets and all their items"""
+        Running time: O(b*l) or O(n) because we loop through the buckets and all their items"""
         
         # Collect all keys in each bucket
-        all_keys = []
+        all_keys = [] #O(1)
 
-        for bucket in self.buckets:
-            for key, value in bucket.items():
+        for bucket in self.buckets: #b iterations 
+            for key, value in bucket.items(): #O(l)
                 all_keys.append(key)
         return all_keys
 
     def values(self):
         """Return a list of all values in this hash table.
-        Running time: O(l) because we loop through the buckets and all their items"""
+        Running time: O(b*l) or O(n) because we loop through the buckets and all their items"""
         
         all_values = []
 
         # Loop through all buckets
         for bucket in self.buckets: # b iterations
-            for key, val in bucket.items():
+            for key, val in bucket.items(): # O(l)
         #Collect all values in each bucket
                 all_values.append(val)
         return all_values
@@ -104,7 +104,7 @@ class HashTable(object):
         entry_found = bucket.find(key_matcher) # 0(l) with l = bucket.length()
 
         #If found, return value associated with given key
-        if entry_found is not None:
+        if entry_found is not None: #O(1)
             return entry_found[1]
         #Otherwise, raise error to tell user get failed
         else:
