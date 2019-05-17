@@ -23,6 +23,10 @@ def get_three_words(corpus):
     for index in range(len(corpus)-2):
         yield(corpus[index], corpus[index + 1], corpus[index + 2])
 
+def get_four_words(corpus):
+    for index in range(len(corpus)-3):
+        yield(corpus[index], corpus[index + 1], corpus[index + 2], corpus[index + 3])
+
 '''
 this function stores each individual word as keys
 and appends their pairs as values for that key
@@ -57,8 +61,18 @@ def second_order_walk(corpus):
             markov_dict[tuple].add_count(word_3)
     return markov_dict
 
-def nth_order_walk(corpus):
+def third_order_walk(corpus):
+    markov_dict = {}
+    four_words= (get_four_words(corpus))
 
+    for word_1, word_2, word_3, word_4 in four_words:
+        tuple = (word_1, word_2, word_3)
+        if tuple not in markov_dict:
+            add_tuple = Dictogram([word_4])
+            markov_dict[tuple] = add_tuple
+        else:
+            markov_dict[tuple].add_count(word_4)
+    return markov_dict
 ''' 
 Picks a random start word for markov walk from list of dict keys
 '''
@@ -100,13 +114,17 @@ def second_order_sentence(markov_dict):
 
 
 if __name__ == '__main__':
-    corpus = get_corpus('siddhartha.txt')
+    corpus = get_corpus('corpus.txt')
     chain = markov_walk(corpus)
     # print(chain)
     # sentence = generate_sentence(chain)
     # print(sentence)
-    test = second_order_walk(corpus)
-    sentence = second_order_sentence(test)
-    print(sentence)
+    # test = second_order_walk(corpus)
+    # sentence = second_order_sentence(test)
+    # print(sentence)
+    test = third_order_walk(corpus)
+    print(test)
+    # sentence = second_order_sentence(test)
+    # print(sentence)
     
     
